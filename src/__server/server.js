@@ -1,6 +1,7 @@
 import Express from 'express'
 import React from 'react'
 import { renderToString, renderToStaticMarkup } from 'react-dom/server'
+import fetch from 'node-fetch'
 /** apollo */
 import { ApolloProvider } from '@apollo/react-common'
 import { ApolloClient } from 'apollo-client'
@@ -30,6 +31,7 @@ app.use((req, res, next) => {
         authorization: 'Bearer ',
         cookie: req.header('Cookie'),
       },
+      fetch: fetch
     }),
     cache: new InMemoryCache(),
   })
@@ -55,7 +57,7 @@ app.use((req, res) => {
   getDataFromTree(res.App).then(() => {
     // We are ready to render for real
     const content = renderToString(res.App)
-    const initialState = client.extract()
+    const initialState = res.apolloClient.extract()
   
     const html = <Html content={content} state={initialState} />
   

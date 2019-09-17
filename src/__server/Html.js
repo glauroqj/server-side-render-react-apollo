@@ -1,3 +1,6 @@
+import React from 'react'
+// import PropTypes from 'prop-types'
+
 const Html = ({content, state}) => (
   <html>
     <body>

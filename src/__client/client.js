@@ -9,6 +9,7 @@ import fetch from 'node-fetch'
 import { ApolloProvider } from '@apollo/react-common'
 
 import Layout from '../routes/Layout'
+import { ThemeProvider, CSSReset } from '@chakra-ui/core'
 
 const client = new ApolloClient({
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
@@ -26,7 +27,10 @@ const client = new ApolloClient({
 hydrate(
   <ApolloProvider client={client}>
     <BrowserRouter>
-      <Layout />
+      <ThemeProvider>
+        <CSSReset />
+        <Layout />
+      </ThemeProvider>
     </BrowserRouter>
   </ApolloProvider>,
   document.getElementById('root')

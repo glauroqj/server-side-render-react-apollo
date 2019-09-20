@@ -11,8 +11,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { getDataFromTree } from '@apollo/react-ssr'
 
 import Html from './Html'
-
 import Layout from '../routes/Layout'
+import { ThemeProvider, CSSReset } from '@chakra-ui/core'
 
 const app = new Express()
 
@@ -42,7 +42,10 @@ app.use((req, res, next) => {
   res.App = (
     <ApolloProvider client={res.apolloClient}>
       <StaticRouter location={req.url} context={context}>
-        <Layout />
+        <ThemeProvider>
+          <CSSReset />
+          <Layout />
+        </ThemeProvider>
       </StaticRouter>
     </ApolloProvider>
   )
@@ -54,7 +57,8 @@ app.use((req, res, next) => {
 
 app.use((req, res) => {
 
-  getDataFromTree(res.App).then(() => {
+  getDataFromTree(res.App)
+  .then(() => {
     // We are ready to render for real
     const content = renderToString(res.App)
     const initialState = res.apolloClient.extract()

@@ -13,6 +13,7 @@ import { getDataFromTree } from '@apollo/react-ssr'
 import Html from './Html'
 import Layout from '../routes/Layout'
 import { ThemeProvider } from '@chakra-ui/core'
+import { ServerStyleSheet } from 'styled-components'
 
 const app = new Express()
 
@@ -58,11 +59,19 @@ app.use((req, res) => {
 
   getDataFromTree(res.App)
   .then(() => {
-    // We are ready to render for real
+    /* We are ready to render for real */
     const content = renderToString(res.App)
+    /* prepare style on server */
+    const sheet = new ServerStyleSheet()
+    const styleTags = sheet.getStyleTags()
+
     const initialState = res.apolloClient.extract()
   
-    const html = <Html content={content} state={initialState} />
+    const html = <Html
+                  styles={styleTags}
+                  content={content}
+                  state={initialState}
+                />
   
     res.status(200)
     res.send(`<!doctype html>\n${renderToStaticMarkup(html)}`)

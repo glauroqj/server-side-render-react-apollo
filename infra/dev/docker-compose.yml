@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  server_side:
+    container_name: server_side_render
+    working_dir: /app
+    build:
+      context: ./
+      dockerfile: ./infra/dev/Dockerfile
+    volumes:
+      - ./:/app
+    env_file:
+      - ./infra/dev/.env
+    ports:
+      - "3000:3000"

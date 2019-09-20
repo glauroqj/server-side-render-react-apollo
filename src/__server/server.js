@@ -25,10 +25,10 @@ app.use((req, res, next) => {
     // Remember that this is the interface the SSR server will use to connect to the
     // API server, so we need to ensure it isn't firewalled, etc
     link: createHttpLink({
-      uri: 'https://api.github.com/graphql',
+      uri: `${process.env.BASE_URL}`,
       credentials: 'same-origin',
       headers: {
-        authorization: 'Bearer  00f01ae36a430636740fdcc895b636ea6e5f18d2',
+        authorization: `${process.env.AUTH}`,
         cookie: req.header('Cookie'),
       },
       fetch: fetch
@@ -69,6 +69,6 @@ app.use((req, res) => {
 
 })
 
-app.listen('3000', () => console.log( // eslint-disable-line no-console
-  `app Server is now running on http://localhost:${3000}`
+app.listen(process.env.PORT, process.env.HOST, () => console.log( // eslint-disable-line no-console
+  `< SERVER RUNNING : PORT ${process.env.PORT} : HOST ${process.env.HOST} >`
 ))

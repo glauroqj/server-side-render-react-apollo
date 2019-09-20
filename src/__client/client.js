@@ -13,10 +13,10 @@ import Layout from '../routes/Layout'
 const client = new ApolloClient({
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
   link: createHttpLink({
-    uri: 'http://localhost:3000',
+    uri: 'https://api.github.com/graphql',
     credentials: 'same-origin',
     headers: {
-      authorization: 'Bearer '
+      authorization: 'Bearer  00f01ae36a430636740fdcc895b636ea6e5f18d2',
     },
     fetch: fetch
   }),

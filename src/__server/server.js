@@ -25,10 +25,10 @@ app.use((req, res, next) => {
     // Remember that this is the interface the SSR server will use to connect to the
     // API server, so we need to ensure it isn't firewalled, etc
     link: createHttpLink({
-      uri: 'http://localhost:3000',
+      uri: 'https://api.github.com/graphql',
       credentials: 'same-origin',
       headers: {
-        authorization: 'Bearer ',
+        authorization: 'Bearer  00f01ae36a430636740fdcc895b636ea6e5f18d2',
         cookie: req.header('Cookie'),
       },
       fetch: fetch

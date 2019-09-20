@@ -1,0 +1,12 @@
+query($number_of_repos:Int!) {
+  viewer {
+    name
+      repositories(last: $number_of_repos) {
+        totalCount
+        nodes {
+          name
+          url
+        }
+      }
+  }
+}

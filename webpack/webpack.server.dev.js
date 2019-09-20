@@ -19,10 +19,16 @@ module.exports = {
         test: /\.(js|jsx)$/,
         resolve: { extensions: ['.js', '.jsx'] },
         exclude: /node_modules/,
-        use: [{
+        use: [
+          {
             loader: 'babel-loader',
           }
         ]
+      },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader',
       }
     ]
   },

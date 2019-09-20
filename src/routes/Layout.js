@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router'
 import React from 'react'
 
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar/Navbar'
 
 // A Routes file is a good shared entry-point between client and server
 import routes from './routes'

@@ -8,9 +8,11 @@ const Layout = () => (
   <>
     {/* New <Switch> behavior introduced in React Router v4
        https://reacttraining.com/react-router/web/api/Switch */}
+    <div>HEADER</div>
     <Switch>
       {routes.map(route => <Route key={route.name} {...route} />)}
     </Switch>
+    <div>FOOTER</div>
   </>
 )
 

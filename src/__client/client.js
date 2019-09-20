@@ -1,5 +1,7 @@
 import React from 'react'
 import { hydrate } from 'react-dom'
+import { ApolloClient } from 'apollo-client'
+import { InMemoryCache } from 'apollo-cache-inmemory'
 import { BrowserRouter } from 'react-router-dom'
 import { createHttpLink } from 'apollo-link-http'
 import fetch from 'node-fetch'
@@ -14,8 +16,7 @@ const client = new ApolloClient({
     uri: 'http://localhost:3000',
     credentials: 'same-origin',
     headers: {
-      authorization: 'Bearer ',
-      cookie: req.header('Cookie'),
+      authorization: 'Bearer '
     },
     fetch: fetch
   }),

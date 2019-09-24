@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 
 /** queries */
 import GET_REPOSITORIES from 'graphql/queries/getRepositories.graphql'
+/** components */
+import {
+  Flex,
+  List,
+  ListItem
+} from '@chakra-ui/core'
 
 const Home = () => {
   
@@ -11,20 +17,28 @@ const Home = () => {
     error,
     data
   } = useQuery(GET_REPOSITORIES, {
-    variables: { number_of_repos: 15 }
+    variables: { number_of_repos: 20 }
   })
   
   if (loading) return <h2>Loading...</h2>
 
   return (
-    <>
-      <h1>HOME</h1>
-      <ul>
+    <Flex 
+      w="100%"
+      align="center"
+      justifyContent="center"
+      padding="5"
+    >
+      <List as="ol" styleType="decimal" spacing="3">
         {data.viewer.repositories.nodes.map(item => (
-          <li key={item.name}>{item.name} - {item.url}</li>
+          <React.Fragment key={item.name}>
+            <ListItem>
+              {item.name} - {item.url}
+            </ListItem>
+          </React.Fragment>
         ))}
-      </ul>
-    </>
+      </List>
+    </Flex>
   )
 }
 

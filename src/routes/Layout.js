@@ -14,7 +14,6 @@ const Layout = () => (
     <Switch>
       {routes.map(route => <Route key={route.name} {...route} />)}
     </Switch>
-    <div>FOOTER</div>
   </>
 )
 

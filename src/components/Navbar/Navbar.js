@@ -8,7 +8,7 @@ import * as El from './Navbar.style'
 
 const Navbar = () => (
   <El.Navbar>
-    <Box fontSize={['sm', 'md', 'lg', 'xl']}>Navbar</Box>
+    <Box fontSize={['sm', 'md', 'lg', 'xl']}>Github Projects</Box>
   </El.Navbar>
 )
 

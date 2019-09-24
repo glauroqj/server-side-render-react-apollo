@@ -4,6 +4,9 @@ import React from 'react'
 const Html = ({styles, content, state}) => (
   <html>
     <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0" />
+      <title>Server Side Render</title>
+
       <head dangerouslySetInnerHTML={{
           __html: styles
         }}/>

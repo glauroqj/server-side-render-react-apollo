@@ -20,7 +20,11 @@
     "dev:build-server": "webpack --config webpack/webpack.server.dev.js --watch",
     "dev:build-client": "webpack --config webpack/webpack.client.dev.js --watch",
     "dev:server": "nodemon --watch build --exec \"node build/server/server.bundle.js\"",
-    "----- PRODUCTION -----": ""
+    "----- PRODUCTION -----": "",
+    "build-prod": "npm-run-all build:*",
+    "build:prod-server": "webpack --config webpack/webpack.server.dev.js",
+    "build:prod-client": "webpack --config webpack/webpack.client.prod.js",
+    "prod": "node --max-old-space-size=6000 ./build/server/server.bundle.js"
   },
   "repository": {
     "type": "git",
@@ -63,8 +67,10 @@
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-styled-components": "^1.10.6",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "compression-webpack-plugin": "^3.0.0",
     "nodemon": "^1.19.2",
     "npm-run-all": "^4.1.5",
+    "terser-webpack-plugin": "^2.1.0",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.8",
     "webpack-node-externals": "^1.7.2"

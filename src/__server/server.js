@@ -2,6 +2,7 @@ import Express from 'express'
 import React from 'react'
 import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import fetch from 'node-fetch'
+import v8 from 'v8'
 /** apollo */
 import { ApolloProvider } from '@apollo/react-common'
 import { ApolloClient } from 'apollo-client'
@@ -57,7 +58,10 @@ app.use((req, res, next) => {
 
 
 app.use((req, res) => {
-
+  const totalHeapSize = (v8.getHeapStatistics().total_available_size / 1024 / 1024 / 1024).toFixed(2)
+  const totalHeapUsed = (v8.getHeapStatistics().used_heap_size / 1024 / 1024 / 1024).toFixed(2)
+  console.info(`< NODE: TOTAL HEAP SIZE (GB ~${totalHeapSize}) | TOTAL USED (GB ~${totalHeapUsed}) >`)
+  
   getDataFromTree(res.App)
   .then(() => {
     /* We are ready to render for real */
@@ -78,7 +82,10 @@ app.use((req, res) => {
     res.send(`<!doctype html>\n${renderToStaticMarkup(html)}`)
     res.end()
   })
-  .catch(error => console.warn('< GET DATA FROM TREE : ERROR > ', error))
+  .catch(error => {
+    console.warn('< GET DATA FROM TREE : ERROR > ', error)
+    res.end()
+  })
 
 })
 

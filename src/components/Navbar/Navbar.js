@@ -5,7 +5,9 @@ import * as El from './Navbar.style'
 
 const Navbar = () => (
   <El.Navbar>
-    <El.NavbarLogo>Find Jobs</El.NavbarLogo>
+    <El.NavbarLogo onClick={ () => window.location.replace('/') }>
+      Find Jobs
+    </El.NavbarLogo>
     <El.NavbarMenu>
       <div>Options</div>
     </El.NavbarMenu>

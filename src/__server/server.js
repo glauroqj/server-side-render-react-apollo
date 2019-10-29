@@ -13,7 +13,11 @@ import { getDataFromTree } from '@apollo/react-ssr'
 
 import Html from './Html'
 import Layout from '../routes/Layout'
-import { ThemeProvider, CSSReset } from '@chakra-ui/core'
+
+/** styles */
+import { ThemeProvider } from 'styled-components'
+import { Reset } from 'styled-reset'
+import { GlobalStyle, Theme } from '../assets/style'
 import { ServerStyleSheet } from 'styled-components'
 
 const app = new Express()
@@ -44,8 +48,9 @@ app.use((req, res, next) => {
   res.App = (
     <ApolloProvider client={res.apolloClient}>
       <StaticRouter location={req.url} context={context}>
-        <ThemeProvider>
-          <CSSReset />
+        <ThemeProvider theme={Theme}>
+          <Reset />
+          <GlobalStyle />
           <Layout />
         </ThemeProvider>
       </StaticRouter>

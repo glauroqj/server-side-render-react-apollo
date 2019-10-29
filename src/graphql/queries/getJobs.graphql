@@ -1,0 +1,13 @@
+query getJobs {
+	jobs {
+		title
+    slug
+    applyUrl
+    isPublished
+    company {
+			name
+      id
+      slug
+    }
+  }
+}

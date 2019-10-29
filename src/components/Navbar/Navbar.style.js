@@ -13,7 +13,7 @@ export const Navbar = styled.div`
   box-shadow: 0 3px 5px #cecece;
 
   @media ( max-width: ${ Breakpoints.xs } ) {
-    padding: 0 32px;
+    // padding: 0 32px;
   }
 `
 

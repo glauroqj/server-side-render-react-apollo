@@ -20,8 +20,15 @@ const Home = () => {
   console.log('< QUERY > ', data)
 
   return (
-    <div>HOME</div>
-  )
+    <>
+      {data.jobs.map(item => (
+        <div>
+          <p>Company: {item.company.name} <a href={item.applyUrl} target="_blank">Link</a></p>
+          <p>Job: {item.title}</p>
+        </div>
+      ))}
+    </>
+  )     
 }
 
 export default Home

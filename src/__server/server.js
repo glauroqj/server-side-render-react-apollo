@@ -49,8 +49,8 @@ app.use((req, res, next) => {
     <ApolloProvider client={res.apolloClient}>
       <StaticRouter location={req.url} context={context}>
         <ThemeProvider theme={Theme}>
-          <Reset />
           <GlobalStyle />
+          <Reset />
           <Layout />
         </ThemeProvider>
       </StaticRouter>

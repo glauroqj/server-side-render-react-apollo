@@ -31,8 +31,8 @@ hydrate(
   <ApolloProvider client={client}>
     <BrowserRouter>
       <ThemeProvider theme={Theme}>
-        <Reset />
         <GlobalStyle />
+        <Reset />
         <Layout />
       </ThemeProvider>
     </BrowserRouter>

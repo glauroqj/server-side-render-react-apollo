@@ -6,7 +6,8 @@ const Html = ({styles, content, state}) => (
     <head>
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0" />
       <title>Server Side Render</title>
-
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"></link>
+      
       <head dangerouslySetInnerHTML={{
           __html: styles
         }}/>

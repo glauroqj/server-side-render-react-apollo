@@ -2,13 +2,7 @@ import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 
 /** queries */
-import GET_REPOSITORIES from 'graphql/queries/getRepositories.graphql'
-/** components */
-import {
-  Flex,
-  List,
-  ListItem
-} from '@chakra-ui/core'
+import GET_JOBS from 'graphql/queries/getJobs.graphql'
 
 const Home = () => {
   
@@ -16,30 +10,25 @@ const Home = () => {
     loading,
     error,
     data
-  } = useQuery(GET_REPOSITORIES, {
-    variables: { number_of_repos: 20 }
+  } = useQuery(GET_JOBS, {
+    variables: ''
   })
   
+  
   if (loading) return <h2>Loading...</h2>
+  
+  console.log('< QUERY > ', data)
 
   return (
-    <Flex 
-      w="100%"
-      align="center"
-      justifyContent="center"
-      padding="5"
-    >
-      <List as="ol" styleType="decimal" spacing="3">
-        {data.viewer.repositories.nodes.map(item => (
-          <React.Fragment key={item.name}>
-            <ListItem>
-              {item.name} - {item.url}
-            </ListItem>
-          </React.Fragment>
-        ))}
-      </List>
-    </Flex>
-  )
+    <>
+      {data.jobs.map(item => (
+        <div>
+          <p>Company: {item.company.name} <a href={item.applyUrl} target="_blank">Link</a></p>
+          <p>Job: {item.title}</p>
+        </div>
+      ))}
+    </>
+  )     
 }
 
 export default Home

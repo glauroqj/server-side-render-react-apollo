@@ -20,7 +20,11 @@
     "dev:build-server": "webpack --config webpack/webpack.server.dev.js --watch",
     "dev:build-client": "webpack --config webpack/webpack.client.dev.js --watch",
     "dev:server": "nodemon --watch build --exec \"node build/server/server.bundle.js\"",
-    "----- PRODUCTION -----": ""
+    "----- PRODUCTION -----": "",
+    "build-prod": "npm-run-all build:*",
+    "build:prod-server": "webpack --config webpack/webpack.server.dev.js",
+    "build:prod-client": "webpack --config webpack/webpack.client.prod.js",
+    "prod": "pm2-runtime ecosystem.config.js"
   },
   "repository": {
     "type": "git",
@@ -36,22 +40,21 @@
     "@apollo/react-common": "^3.1.1",
     "@apollo/react-hooks": "^3.1.1",
     "@apollo/react-ssr": "^3.1.1",
-    "@chakra-ui/core": "^0.2.8",
-    "@emotion/core": "^10.0.17",
-    "@emotion/styled": "^10.0.17",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
     "apollo-link-http": "^1.5.16",
-    "emotion-theming": "^10.0.19",
     "express": "^4.17.1",
+    "global": "^4.4.0",
     "graphql": "^14.5.6",
     "graphql-tag": "^2.10.1",
     "node-fetch": "^2.6.0",
+    "pm2": "^3.5.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "styled-reset": "^4.0.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
@@ -63,8 +66,10 @@
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-styled-components": "^1.10.6",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "compression-webpack-plugin": "^3.0.0",
     "nodemon": "^1.19.2",
     "npm-run-all": "^4.1.5",
+    "terser-webpack-plugin": "^2.1.0",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.8",
     "webpack-node-externals": "^1.7.2"

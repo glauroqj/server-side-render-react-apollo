@@ -4,31 +4,26 @@ import { useQuery } from '@apollo/react-hooks'
 /** queries */
 import GET_JOBS from 'graphql/queries/getJobs.graphql'
 
+/** components */
+import ListItem from '../components/ListItem/ListItem'
+
 const Home = () => {
   
   const {
     loading,
     error,
     data
-  } = useQuery(GET_JOBS, {
-    variables: ''
-  })
+  } = useQuery(
+    GET_JOBS, 
+    { variables: '' },
+    { fetchPolicy: 'cache-and-network' }
+  )
   
   
   if (loading) return <h2>Loading...</h2>
-  
-  console.log('< QUERY > ', data)
+  if (error) return <p>ERROR: {error.message}</p>
 
-  return (
-    <>
-      {data.jobs.map(item => (
-        <div>
-          <p>Company: {item.company.name} <a href={item.applyUrl} target="_blank">Link</a></p>
-          <p>Job: {item.title}</p>
-        </div>
-      ))}
-    </>
-  )     
+  return <ListItem items={data.jobs} />     
 }
 
 export default Home

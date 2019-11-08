@@ -12,7 +12,7 @@ import Layout from '../routes/Layout'
 /** style */
 import { ThemeProvider } from 'styled-components'
 import { Reset } from 'styled-reset'
-import { GlobalStyle, Theme } from '../assets/style'
+import { GlobalStyle, Theme } from 'assets/style'
 
 const client = new ApolloClient({
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),

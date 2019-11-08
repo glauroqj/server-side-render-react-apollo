@@ -17,7 +17,7 @@ import Layout from '../routes/Layout'
 /** styles */
 import { ThemeProvider } from 'styled-components'
 import { Reset } from 'styled-reset'
-import { GlobalStyle, Theme } from '../assets/style'
+import { GlobalStyle, Theme } from 'assets/style'
 import { ServerStyleSheet } from 'styled-components'
 
 const app = new Express()

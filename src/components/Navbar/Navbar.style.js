@@ -8,7 +8,6 @@ export const Navbar = styled.div`
   align-items: center;
   background-color: ${props => props.theme.color.c_secondary};
   color: #fff;
-  box-shadow: 0 3px 5px #cecece;
 
   @media ( max-width: ${props => props.theme.breakpoint.xs} ) {
     // padding: 0 32px;

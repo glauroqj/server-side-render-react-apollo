@@ -5,7 +5,8 @@ import { useQuery } from '@apollo/react-hooks'
 import GET_JOBS from 'graphql/queries/getJobs.graphql'
 
 /** components */
-import ListItem from '../components/ListItem/ListItem'
+import SubSection from 'components/SubSection/SubSection'
+import ListItem from 'components/ListItem/ListItem'
 
 const Home = () => {
   
@@ -23,7 +24,12 @@ const Home = () => {
   if (loading) return <h2>Loading...</h2>
   if (error) return <p>ERROR: {error.message}</p>
 
-  return <ListItem items={data.jobs} />     
+  return (
+    <>
+      <SubSection />
+      <ListItem items={data.jobs} />
+    </>
+  )     
 }
 
 export default Home

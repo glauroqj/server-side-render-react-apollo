@@ -11,7 +11,11 @@ const Breakpoints = {
 
 const Colors = {
   c_main: '#ee6123',
-  c_secondary: '#61b3de'
+  c_main_dark: '#D45620',
+  c_secondary: '#61b3de',
+  c_secondary_dark: '#569EC4',
+  c_third: '#DEA862',
+  c_third_dark: '#C49556'
 }
 
 const Spaces = {
@@ -33,7 +37,9 @@ const FontSize = {
   12: '12px',
   14: '14px',
   16: '16px',
-  18: '18px'
+  18: '18px',
+  24: '24px',
+  32: '32px'
 }
 const FontWeight = {
   light: 300,

@@ -2,24 +2,11 @@ import Express from 'express'
 import React from 'react'
 import { renderToString, renderToStaticMarkup } from 'react-dom/server'
 import v8 from 'v8'
-// import fetch from 'node-fetch'
 /** apollo */
-// import { ApolloProvider } from '@apollo/react-common'
-// import { ApolloClient } from 'apollo-client'
-// import { createHttpLink } from 'apollo-link-http'
-// import { StaticRouter } from 'react-router'
-// import { InMemoryCache } from 'apollo-cache-inmemory'
-
 import createApolloClient from './createApolloClient'
 import { getDataFromTree } from '@apollo/react-ssr'
-
-// import Layout from '../routes/Layout'
-import Html from './Html'
-
 /** styles */
-// import { ThemeProvider } from 'styled-components'
-// import { Reset } from 'styled-reset'
-// import { GlobalStyle, Theme } from 'assets/style'
+import Html from './Html'
 import { ServerStyleSheet } from 'styled-components'
 
 const app = new Express()

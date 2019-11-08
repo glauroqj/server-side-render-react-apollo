@@ -1,2 +1,2 @@
-export { default as GlobalStyle } from './global'
-export { Theme, Breakpoints } from './configurations'
+// export { default as GlobalStyle } from './global'
+export { GlobalStyle, Theme } from './configurations'

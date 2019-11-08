@@ -27,11 +27,11 @@ const createButtons = (color, fontWeight) => ({
     }
   `,
   default: `
-    background-color: ${color.c_azure};
-    border-color: ${color.c_azure};
-    color: ${color.c_azure};
+    background-color: ${color.c_main};
+    border-color: ${color.c_main};
+    color: ${color.c_main};
     &:hover {
-      background-color: ${color.c_azure};
+      background-color: ${color.c_main};
     }
   `,
   // primary: `

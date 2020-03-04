@@ -1,5 +1,5 @@
 import React from 'react'
-import { hydrate } from 'react-dom'
+import { hydrate, render } from 'react-dom'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { BrowserRouter } from 'react-router-dom'
@@ -27,15 +27,34 @@ const client = new ApolloClient({
   ssrForceFetchDelay: 100
 })
 
-hydrate(
-  <ApolloProvider client={client}>
-    <BrowserRouter>
-      <ThemeProvider theme={Theme}>
-        <GlobalStyle />
-        <Reset />
-        <Layout />
-      </ThemeProvider>
-    </BrowserRouter>
-  </ApolloProvider>,
-  document.getElementById('root')
-)
+const rootElement = document.getElementById('root')
+
+console.log('< ROOT ELEMENT > ', rootElement, rootElement.hasChildNodes)
+
+if (rootElement.hasChildNodes) {
+  hydrate(
+    <ApolloProvider client={client}>
+      <BrowserRouter>
+        <ThemeProvider theme={Theme}>
+          <GlobalStyle />
+          <Reset />
+          <Layout />
+        </ThemeProvider>
+      </BrowserRouter>
+    </ApolloProvider>,
+    rootElement
+  )
+} else {
+  render(
+    <ApolloProvider client={client}>
+      <BrowserRouter>
+        <ThemeProvider theme={Theme}>
+          <GlobalStyle />
+          <Reset />
+          <Layout />
+        </ThemeProvider>
+      </BrowserRouter>
+    </ApolloProvider>,
+    rootElement
+  )
+}

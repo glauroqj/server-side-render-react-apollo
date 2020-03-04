@@ -1,6 +1,9 @@
 import Express from 'express'
 import React from 'react'
-import { renderToString, renderToStaticMarkup } from 'react-dom/server'
+import {
+  renderToString,
+  renderToStaticMarkup
+} from 'react-dom/server'
 import v8 from 'v8'
 /** apollo */
 import createApolloClient from './createApolloClient'
